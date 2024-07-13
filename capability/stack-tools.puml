@@ -1,0 +1,92 @@
+@startuml
+
+!include <archimate/Archimate>
+
+skinparam nodesep 10
+
+title MuleSoft Stack Tools
+
+
+Grouping(projMgmt, "Project Management") {
+    Strategy_Capability(jira, "Atlassian Jira") 
+}
+
+Grouping(docMgmt, "Document Collaboration") {
+    Strategy_Capability(confluence, "Atlassian Confluence")
+}
+
+Grouping(sourceCode, "Source Code Collaboration") {
+    Strategy_Capability(github, "GitHub")
+    Strategy_Capability(gitkraken, "GitKraken")
+}
+
+Grouping(cicd, "CI/CD") {
+    Strategy_Capability(azure_devops, "Azure DevOps")
+}
+
+Grouping(incidMgmt, "Incident Management") {
+    Strategy_Capability(opsgenie, "Opsgenie")
+}
+
+Grouping(compCatalog, "Developer Portal") {
+    Strategy_Capability(compass, "Atlassian Compass")
+}
+
+Grouping(communication, "Communication") {
+    Strategy_Capability(slack, "Slack")
+}
+
+Grouping(devIde, "Development IDE") {
+    Strategy_Capability(vscode, "VS Code")
+    Strategy_Capability(anypoint_studio, "Anypoint Studio")
+}
+
+    Grouping(anypointPlatform, "Anypoint Platform") {
+        Strategy_Capability(exchange, "Exchange")
+        Strategy_Capability(rmgmt, "Runtime Manager")
+        Strategy_Capability(dcenter, "Design Center")
+        Strategy_Capability(apiMgmt, "API Manager")
+    }
+
+Grouping(intTool, "Integration Tools") {
+    Strategy_Capability(postman, "Postman")
+}
+
+Grouping(techLayer, "Diagram as Code") {
+    Strategy_Capability(c4model, "C4Model")
+    Strategy_Capability(archimate, "ArchiMate")
+    Strategy_Capability(plantuml, "PlantUML")
+}
+
+
+Rel_Access_Down(jira, compass, Integration)
+Rel_Access_Down(confluence, compass, Integration)
+Rel_Access_Right(github, compass, Integration)
+Rel_Access_Down(azure_devops, compass, Link)
+Rel_Access_Down(opsgenie, compass, Integration)
+
+Rel_Access_Down(github, gitkraken, Integration)
+Rel_Access_Down(gitkraken, devIde, Access)
+
+
+Rel_Access_Up(jira, slack, Integration)
+Rel_Access_Up(confluence, slack, Integration)
+Rel_Access_Up(opsgenie, slack, Integration)
+Rel_Access_Up(azure_devops, slack, Integration)
+
+Rel_Access_Left(github, dcenter, Integration)
+Rel_Access_Left(azure_devops, anypointPlatform, Access)
+
+Rel_Access_Up(exchange, dcenter, Access)
+Rel_Access_Up(exchange, rmgmt, Access)
+Rel_Access_Up(exchange, apiMgmt, Access)
+Rel_Access_Right(apiMgmt, rmgmt, Access)
+
+Rel_Access_Up(c4model, plantuml, Access)
+Rel_Access_Up(archimate, plantuml, Access)
+
+Rel_Access_Down(vscode, plantuml, Access)
+
+Rel_Access_Up(postman, anypoint_studio, Access)
+
+@enduml
