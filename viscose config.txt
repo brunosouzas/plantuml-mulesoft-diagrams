@@ -1,0 +1,69 @@
+{
+    "window.zoomLevel": 1,
+    "window.commandCenter": false,
+    "symbols.hidesExplorerArrows": false,
+    "breadcrumbs.enabled": false,
+
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 1.8,
+    "editor.rulers": [80, 120],
+    "editor.renderLineHighlight": "gutter",
+    "editor.fontLigatures": true,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.minimap.enabled": false,
+    
+    "workbench.iconTheme": "symbols",
+    "workbench.colorTheme": "Min Light",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.visible": false,
+    "workbench.editor.labelFormat": "short",
+
+    "explorer.compactFolders": false,
+    "explorer.fileNesting.enabled": true,
+
+    "security.workspace.trust.untrustedFiles": "open",
+    
+    "files.exclude": {
+        "**/.apivcs": true,
+        "**/.gitignore": true,
+        "**/.git": true,
+        "**/.designer.json": true,
+        "**/.exchange.xml": true,
+        "**/.vscode": true,
+        "**/.mvn": true,
+        "**/.tmp": true,
+        "**/.settings": true,
+        "**/.exchange_modules_tmp": true
+    },
+
+    "mule.controlPlane": "US Cloud",
+    "mule.runtime.muleRuntimesDirectory": "/Users/brunosouzas/muleRuntimes",
+    "mule.runtime.muleHome": "/Users/brunosouzas/muleRuntimes/mule-enterprise-standalone-4.4.0-20240408/",
+    "mule.homeDirectory": "/Users/brunosouzas/AnypointCodeBuilder",
+    
+    "amlLanguageServer.formattingOptions.RAML.tabSize": 2,
+    "amlLanguageServer.formattingOptions.OAS.JSON.tabSize": 2,
+    "amlLanguageServer.formattingOptions.OAS.YAML.tabSize": 2,
+
+    "java.debug.settings.console": "internalConsole",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontFamily": "JetBrainsMono NF",
+    "update.showReleaseNotes": false,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "java.jdt.ls.java.home": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home",
+    "maven.executable.preferMavenWrapper": false,
+    "remote.restoreForwardedPorts": false,
+    "remote.portsAttributes": {
+        "6666": {
+            "onAutoForward": "ignore",
+            "host": "127.0.0.1"
+        }
+    },
+    "plantuml.jar": "/Users/brunosouzas/application/plantuml/2024/plantuml-1.2024.6.jar",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false
+}
