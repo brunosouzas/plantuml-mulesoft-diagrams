@@ -1,0 +1,9 @@
+'servicenow Logo
+!$docusignLogo = $imgUrl + "/dist/docusign/docusign_logo.png"
+!$docusignBlackLogo = $imgUrl + "/dist/docusign/docusign_black_logo.png"
+
+GeneralEntityColoring(DocuSign)
+!define DocuSign(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $docusignLogo, DocuSign)
+!define DocuSign(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $docusignLogo, DocuSign)
+!define DocuSignBlack(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $docusignBlackLogo, DocuSign)
+!define DocuSignBlack(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $docusignBlackLogo, DocuSign)

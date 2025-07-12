@@ -1,0 +1,10 @@
+'commercetools Logo
+!$commercetoolsBrand = $imgUrl + "/dist/commercetools/commercetools-brand.png"
+!$commercetoolsLogo = $imgUrl + "/dist/commercetools/commercetools_logo.png"
+
+GeneralEntityColoring(commercetools)
+!define commercetools(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $commercetoolsBrand, commercetools)
+!define commercetools(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $commercetoolsBrand, commercetools)
+
+!define commercetoolsSymbol(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $commercetoolsLogo, commercetools)
+!define commercetoolsSymbol(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $commercetoolsLogo, commercetools)

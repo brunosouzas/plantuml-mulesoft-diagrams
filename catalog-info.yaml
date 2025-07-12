@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: diagrams
+  description: Diagrams and PlantUML library
+  annotations:
+    github.com/project-slug: 'brunosouzas/diagrams'
+    backstage.io/techdocs-ref: dir:./techDocs
+spec:
+  type: library
+  lifecycle: development
+  owner: administrators

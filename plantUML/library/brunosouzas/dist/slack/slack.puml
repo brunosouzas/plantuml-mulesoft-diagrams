@@ -1,0 +1,6 @@
+'slack Logo
+!$slackLogo = $imgUrl + "/dist/slack/slack.png"
+
+GeneralEntityColoring(slack)
+!define slack(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $slackLogo, slack)
+!define slack(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $slackLogo, slack)

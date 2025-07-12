@@ -1,0 +1,22 @@
+' Styling
+' ##################################
+
+hide stereotype
+
+!definelong GeneralEntityColoring(e_stereo)
+	skinparam rectangle<<e_stereo>> {
+	    BackgroundColor MULESOFT_BG_COLOR
+	    BorderColor MULESOFT_MEDIUM_GREY_COLOR
+	}
+!enddefinelong
+
+' Overwriting Elements
+' ##################################
+
+!definelong GeneralEntity(e_alias, e_label, e_techn, e_img, e_stereo)
+	rectangle "<img:e_img>\n\n==e_label\n" <<e_stereo>> as e_alias
+!enddefinelong
+
+!definelong GeneralEntity(e_alias, e_label, e_techn, e_descr, e_img, e_stereo)
+	rectangle "<img:e_img>\n\n==e_label\n" <<e_stereo>> as e_alias
+!enddefinelong

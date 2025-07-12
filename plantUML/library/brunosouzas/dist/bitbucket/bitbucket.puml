@@ -1,0 +1,6 @@
+'bitbucket Logo
+!$bitbucketLogo = $imgUrl + "/dist/bitbucket/bitbucket.png"
+
+GeneralEntityColoring(bitbucket)
+!define bitbucket(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $bitbucketLogo, bitbucket)
+!define bitbucket(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $bitbucketLogo, bitbucket)

@@ -1,0 +1,6 @@
+'nexus Logo
+!$nexusLogo = $imgUrl + "/dist/nexus/nexus.png"
+
+GeneralEntityColoring(nexus)
+!define nexus(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $nexusLogo, nexus)
+!define nexus(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $nexusLogo, nexus)

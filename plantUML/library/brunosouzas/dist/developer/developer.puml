@@ -1,0 +1,6 @@
+'developer Logo
+!$developerLogo = $imgUrl + "/dist/developer/developer.jpg"
+
+GeneralEntityColoring(developer)
+!define developer(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $developerLogo, developer)
+!define developer(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $developerLogo, developer)

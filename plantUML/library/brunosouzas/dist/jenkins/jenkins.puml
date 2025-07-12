@@ -1,0 +1,6 @@
+'jenkins Logo
+!$jenkinsLogo = $imgUrl + "/dist/jenkins/jenkins.png"
+
+GeneralEntityColoring(jenkins)
+!define jenkins(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $jenkinsLogo, jenkins)
+!define jenkins(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $jenkinsLogo, jenkins)

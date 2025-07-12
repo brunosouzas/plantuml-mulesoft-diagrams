@@ -1,0 +1,43 @@
+'General Logo
+!$userFemaleLogo = $imgUrl + "/dist/general/CoreBlue_UserFemale.png"
+!$userMaleLogo = $imgUrl + "/dist/general/CoreBlue_UserMale.png"
+
+GeneralEntityColoring(user)
+!define userFemale(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $userFemaleLogo, user)
+!define userFemale(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $userFemaleLogo, user)
+!define userMale(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $userMaleLogo, user)
+!define userMale(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $userMaleLogo, user)
+
+!definelong ClassEntityColoring(e_stereo)
+skinparam class<<e_stereo>> {
+	defaultTextAlignment left
+    BackgroundColor MULESOFT_BG_COLOR
+    BorderColor MULESOFT_MEDIUM_GREY_COLOR
+    StereotypeFontSize 12
+    shadowing false
+}
+!enddefinelong
+
+ClassEntityColoring(restAPI)
+!define classRest(e_alias, e_label) class "e_label" as e_alias <<(A, MULESOFT_BLUE_COLOR)restAPI>>
+
+ClassEntityColoring(proxyAPI)
+!define classProxy(e_alias, e_label) class "e_label" as e_alias <<(A, MULESOFT_BLUE_COLOR)proxyAPI>>
+
+ClassEntityColoring(resource)
+!define classResource(e_alias, e_label) class "e_label" as e_alias <<(R, MULESOFT_BLUE_COLOR)resource>>
+
+ClassEntityColoring(queryParameters)
+!define classQueryParameters(e_alias, e_label) class "e_label" as e_alias <<(Q, MULESOFT_BLUE_COLOR)queryParameters>>
+
+ClassEntityColoring(dataType)
+!define classDataType(e_alias, e_label) class "e_label" as e_alias <<(D, MULESOFT_BLUE_COLOR)dataType>>
+
+ClassEntityColoring(sap)
+!define classSAP(e_alias, e_label) class "e_label" as e_alias <<(S, MULESOFT_BLUE_COLOR)sap>>
+
+ClassEntityColoring(policies)
+!define classPolicies(e_alias) class " " as e_alias <<(P, MULESOFT_FUTURE_GREY_COLOR)policies>>
+
+ClassEntityColoring(infrastructure)
+!define classInfra(e_alias, e_label) class "e_label" as e_alias <<(I, MULESOFT_VIRIDIAN_COLOR)infrastructure>>

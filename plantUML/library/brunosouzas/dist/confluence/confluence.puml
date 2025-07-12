@@ -1,0 +1,6 @@
+'confluence Logo
+!$confluenceLogo = $imgUrl + "/dist/confluence/confluence.png"
+
+GeneralEntityColoring(confluence)
+!define confluence(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $confluenceLogo, confluence)
+!define confluence(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $confluenceLogo, confluence)

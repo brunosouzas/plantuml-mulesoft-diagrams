@@ -1,0 +1,43 @@
+'Muleosft Logo
+!$muleBlueLogo = $imgUrl + "/dist/mulesoft/muleBlueLogo.png"
+!$muleBlackLogo = $imgUrl + "/dist/mulesoft/muleBlackLogo.png"
+!$muleBlueDunkey = $imgUrl + "/dist/mulesoft/muleBlueDunkey.png"
+!$muleBlackDunkey = $imgUrl + "/dist/mulesoft/muleBlackDunkey.png"
+
+'Muleosft Layer
+!definelong Layer(e_alias, e_layer) 
+	rectangle " " <<e_layer>> as e_alias
+!enddefinelong
+
+!definelong MulesoftLayer(e_layer)
+	skinparam rectangle<<e_layer>> {
+	    Shadowing false
+	    StereotypeFontSize 0
+	    FontColor #000000
+	    BorderColor MULESOFT_MEDIUM_GREY_COLOR
+	    BorderStyle dashed
+	    BackgroundColor MULESOFT_BG_COLOR
+	}
+!enddefinelong
+
+GeneralEntityColoring(Mulesoft)
+!define mulesoft(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $muleBlueLogo, Mulesoft)
+!define mulesoft(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $muleBlueLogo, Mulesoft)
+
+!define mulesoftBlack(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $muleBlackLogo, Mulesoft)
+!define mulesoftBlack(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $muleBlackLogo, Mulesoft)
+
+!define mulesoftDunkey(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $muleBlueDunkey, Mulesoft)
+!define mulesoftDunkey(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $muleBlueDunkey, Mulesoft)
+
+!define mulesoftBlackDunkey(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $muleBlackDunkey, Mulesoft)
+!define mulesoftBlackDunkey(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $muleBlackDunkey, Mulesoft)
+
+MulesoftLayer(system api)
+!define systemLayer(e_alias) Layer(e_alias, system api)
+
+MulesoftLayer(process api)
+!define processLayer(e_alias) Layer(e_alias, process api)
+
+MulesoftLayer(experience api)
+!define experienceLayer(e_alias) Layer(e_alias, experience api)

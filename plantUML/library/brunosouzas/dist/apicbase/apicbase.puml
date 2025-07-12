@@ -1,0 +1,6 @@
+'servicenow Logo
+!$apicbaseLogo = $imgUrl + "/dist/apicbase/apicbase.png"
+
+GeneralEntityColoring(apicbase)
+!define apicbase(e_alias, e_label, e_techn) GeneralEntity(e_alias, e_label, e_techn, $apicbaseLogo, apicbase)
+!define apicbase(e_alias, e_label, e_techn, e_descr) GeneralEntity(e_alias, e_label, e_techn, e_descr, $apicbaseLogo, apicbase)
