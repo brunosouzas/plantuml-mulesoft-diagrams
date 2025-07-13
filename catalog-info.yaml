@@ -2,6 +2,12 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: diagrams
+  title: Diagrams and PlantUML library
+  tags:
+    - library
+    - plantuml
+    - mermaid
+    - diagrams
   description: Diagrams and PlantUML library
   annotations:
     github.com/project-slug: 'brunosouzas/diagrams'
