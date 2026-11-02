@@ -1,9 +1,13 @@
 name: CI
 
-# Render every diagram (each .puml file with @startuml) with a pinned PlantUML
-# and fail on a syntax error. The samples include the library from a URL or a
-# local path; the workflow points them at this checkout's library, so a pull
-# request renders the library it changes. Smetana layout (built into
+# Render every diagram (each .puml file with @startuml) and every library
+# fragment with a pinned PlantUML and fail on a syntax error. The samples
+# include the library from a URL or a local path; the workflow points them at
+# this checkout's library, so a pull request renders the library it changes.
+# Each fragment under plantUML/library/brunosouzas/ (a .puml file without
+# @startuml) is wrapped in a diagram that includes it (after GeneralCommon.puml
+# for the dist/ fragments, which build on it), so a broken fragment fails even
+# when no sample includes it. Smetana layout (built into
 # PlantUML) avoids an unpinned Graphviz.
 # Actions are pinned by commit SHA, with the tag in a comment.
 
@@ -17,7 +21,7 @@ permissions:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   PLANTUML_VERSION: "1.2026.9"
@@ -43,7 +47,7 @@ jobs:
           curl -fsSLo "$RUNNER_TEMP/plantuml.jar" "https://github.com/plantuml/plantuml/releases/download/v${PLANTUML_VERSION}/plantuml-${PLANTUML_VERSION}.jar"
           echo "${PLANTUML_SHA256}  $RUNNER_TEMP/plantuml.jar" | sha256sum -c -
 
-      - name: Render the diagrams
+      - name: Render the diagrams and the library fragments
         run: |
           set -euo pipefail
           lib="$GITHUB_WORKSPACE/plantUML/library/brunosouzas"
@@ -56,5 +60,17 @@ jobs:
             count=$((count + 1))
           done < <(grep -rl --null --include='*.puml' '@startuml' .)
           test "$count" -gt 0
+          fragments=0
+          while IFS= read -r -d '' f; do
+            f="${f#./}"
+            mkdir -p "$src/fragments/$(dirname "$f")"
+            # A fragment under dist/ builds on GeneralCommon.puml, as in the samples.
+            base=""
+            case "$f" in */dist/*) base="!include $lib/GeneralCommon.puml" ;; esac
+            printf '@startuml\n%s\n!include %s\n@enduml\n' "$base" "$GITHUB_WORKSPACE/$f" > "$src/fragments/$f"
+            echo "fragment: $f"
+            fragments=$((fragments + 1))
+          done < <(grep -rL --null --include='*.puml' '@startuml' ./plantUML/library/brunosouzas)
+          test "$fragments" -gt 0
           java -jar "$RUNNER_TEMP/plantuml.jar" -Playout=smetana -tsvg -failfast2 -o "$RUNNER_TEMP/out" "$src/**.puml"
           ls -l "$RUNNER_TEMP/out"
