@@ -1,0 +1,60 @@
+name: CI
+
+# Render every diagram (each .puml file with @startuml) with a pinned PlantUML
+# and fail on a syntax error. The samples include the library from a URL or a
+# local path; the workflow points them at this checkout's library, so a pull
+# request renders the library it changes. Smetana layout (built into
+# PlantUML) avoids an unpinned Graphviz.
+# Actions are pinned by commit SHA, with the tag in a comment.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PLANTUML_VERSION: "1.2026.9"
+  PLANTUML_SHA256: aa4a1d06f8911c4b842beff4828dd955be431692b631a312d04c0e9fab9581de
+
+jobs:
+  render:
+    name: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: "17.0.21"
+
+      - name: Download PlantUML ${{ env.PLANTUML_VERSION }}
+        run: |
+          curl -fsSLo "$RUNNER_TEMP/plantuml.jar" "https://github.com/plantuml/plantuml/releases/download/v${PLANTUML_VERSION}/plantuml-${PLANTUML_VERSION}.jar"
+          echo "${PLANTUML_SHA256}  $RUNNER_TEMP/plantuml.jar" | sha256sum -c -
+
+      - name: Render the diagrams
+        run: |
+          set -euo pipefail
+          lib="$GITHUB_WORKSPACE/plantUML/library/brunosouzas"
+          src="$RUNNER_TEMP/src"
+          count=0
+          while IFS= read -r -d '' f; do
+            mkdir -p "$src/$(dirname "$f")"
+            sed "s|^!define pathLibrary .*|!define pathLibrary $lib|" "$f" > "$src/$f"
+            echo "diagram: $f"
+            count=$((count + 1))
+          done < <(grep -rl --null --include='*.puml' '@startuml' .)
+          test "$count" -gt 0
+          java -jar "$RUNNER_TEMP/plantuml.jar" -Playout=smetana -tsvg -failfast2 -o "$RUNNER_TEMP/out" "$src/**.puml"
+          ls -l "$RUNNER_TEMP/out"
