@@ -1,7 +1,7 @@
 @startuml order-sys-api_C1
 
 'allow_mixing
-!define pathLibrary /Users/brunosouzas/repository-local/com/github/brunosouzas/diagrams/plantUML/library/brunosouzas
+!define pathLibrary ..
 !include pathLibrary/GeneralCommon.puml
 !include pathLibrary/dist/mulesoft/Mulesoft.puml
 !include pathLibrary/dist/sap/sap.puml
